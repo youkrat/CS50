@@ -16,8 +16,8 @@ int get_positive_int(void)
     printf("Number of meows: ");
     scanf("%d", &n);
     } while (n < 1);
-    return n;}
-
+    return n;
+} 
 void meow (int n )
 {
     for (int i =0; i<n; i++)
