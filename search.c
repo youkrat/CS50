@@ -2,17 +2,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(void){
-    int numbers[] = {20, 500, 10, 5, 100, 1, 50};
-    printf("Enter target to search for: ");
-    int target;
-    scanf("%d", &target);
-    int n = sizeof(numbers);
-    for (int i = 0; i < n; i++){
-        if (numbers[i] == target){
-            printf("Found %d at numbers[%d]\n", target, i + 1);
+int main(void) {
+    char *string[] = {"battleship", "car", "house", "tree", "computer",
+                      "phone", "cup", "bottle", "keyboard", "mouse"};
+    
+    char str[100];
+    printf("Enter word: ");
+    scanf("%99s", str);
+
+    int n = sizeof(string) / sizeof(string[0]);
+
+    for (int i = 0; i < n; i++) {
+        if (strcmp(string[i], str) == 0) {
+            printf("Found \"%s\" at index %d\n", string[i], i);
             return 0;
         }
     }
- return 1;
+
+    printf("Word not found.\n");
+    return 1;
 }

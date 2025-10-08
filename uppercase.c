@@ -23,7 +23,7 @@ void get_string(char str[], int size) {
     str[strcspn(str, "\n")] = 0; // Remove newline
 }
 
-void capitalize(char str[]) {
+void capitalize(char str[]) {// or use toupper from ctype.h
     for (int i = 0; str[i] != '\0'; i++) {
         if (str[i] >= 'a' && str[i] <= 'z') {
             str[i] = str[i] - ('a' - 'A');
