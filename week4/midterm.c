@@ -23,7 +23,7 @@ int countzeros(char S[]){
     int b = firstzero(S);
     while (b >= 0 ){
         x +=1;
-        S = &S[b+1];
+        S = &S[b + 1];
         b = firstzero(S);
     } return x;
 }

@@ -5,9 +5,11 @@
 char *get_string(char *prompt);
 
 int main (void){
-    char *name = get_string("Enter name: ");
-    printf("%s\n", name);
-    free(name);
+    char *s = "Hi!";
+    printf("%s\n", s);
+    printf("%c\n", s[0]);
+    printf("%c\n", s[1]);
+    printf("%c\n", s[2]);
 }
 
 
