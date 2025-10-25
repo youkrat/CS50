@@ -6,10 +6,8 @@ char *get_string(char *prompt);
 
 int main (void){
     char *s = "Hi!";
-    printf("%s\n", s);
-    printf("%c\n", s[0]);
-    printf("%c\n", s[1]);
-    printf("%c\n", s[2]);
+        printf("%s\n", s);
+        printf("%s\n", s + 1);
 }
 
 
