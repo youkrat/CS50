@@ -2,16 +2,23 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 char *get_string(char *prompt);
 
-int main (void){
-    char *s = "Hi!";
-        printf("%s\n", s); // Individual strings can be printed
-        printf("%s\n", s + 1); // Starts printing at s + 1
+int main(void){
+    FILE *file = fopen("phonebook.csv", "a");
+
+    if (file == NULL){
+        return 1;
+    }
+    
+    char *name = get_string("Name: ");
+    char *number = get_string("Number: ");
+
+    fprintf(file, "%s, %s\n", name, number);
 }
 
-
-char *get_string(char *prompt){
+char *get_string(char *prompt) {
     char temp[100];
     printf("%s", prompt);
 
@@ -24,7 +31,7 @@ char *get_string(char *prompt){
         printf("Memory allocation failed.\n");
         exit(1);
     }
+
     strcpy(result, temp);
     return result;
-
 }
