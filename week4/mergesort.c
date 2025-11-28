@@ -26,13 +26,9 @@ void merge(int A[], int lo, int mid, int hi){
 
 }
 void mergesort(int A[], int lo, int hi){
-    printf("lo = %d hi = %d: A1=[", lo, hi);
 
-    for( int i = 0; i < hi; i++){
-        printf("%d ", A[i]);
-    } printf("]\n");
 
-    if(hi-lo <= 1) return;
+     if(hi-lo <= 1) return;
 
     int mid = lo+(hi-lo)/2;
     mergesort(A, lo, mid);
