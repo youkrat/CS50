@@ -1,1 +1,0 @@
-print(type(float(3)))
