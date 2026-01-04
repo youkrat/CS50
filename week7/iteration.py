@@ -1,5 +1,3 @@
-
-
 def whileLoop():
     while where == "right":
         where = input("Go right or left? ")
