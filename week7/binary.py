@@ -26,7 +26,7 @@ if is_neg:
 
 print(result)
 """
-
+#Floats and approximation methods used by computers
 #Converting a base 10 decimal to binary decimal
 x = 0.625
 
