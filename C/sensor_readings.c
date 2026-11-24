@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <limits.h>
-
+#include <stddef.h>
 #define BUFF_LEN 4
 //defining the sensor datatype
 
@@ -10,20 +10,21 @@
 //Implement time since last reading instead // wait for all of them to connect () 
 
 //Centralized time to be able to use timestamps
+//Minimum struct size - 40. Test sizing on ESP32
 typedef struct {
+    int latest_readings[BUFF_LEN];
     int id;
     unsigned int sensor_readings; //Change the data type to allow for more readings and prevent overflow to 0
     int length;
     int max;
     int min;
     bool new_reading;
-    int latest_readings[BUFF_LEN];
 }sensor;
 
 
 //initialize a new sensor, pass in the sensor id (add restriction to avoid previous numbers)
 sensor initialize(int sensor_id){
-    sensor new_sensor = {sensor_id, 0,0, INT_MIN, INT_MAX, false, {0,0,0,0}};
+    sensor new_sensor = {{0,0,0,0}, sensor_id, 0,0, INT_MIN, INT_MAX, false};
     return new_sensor;
 }
 
@@ -148,3 +149,21 @@ int main(void){
     add_reading(&sensor1, 25);
     publish_oldest_reading(&sensor1);
 }
+
+
+/*
+test unit for struct sizing
+int main (void){
+    printf("Size of sensor %zu\n", sizeof(sensor));
+    sensor sensor1 = initialize(1);
+    printf("Offset of garbage %zu\n", offsetof(sensor, garbage));
+    printf("Size of latest readings: %zu\n", sizeof(sensor1.latest_readings));
+    printf("Size of id: %zu\n", sizeof(sensor1.id));
+    printf("Size of # of sensor readings: %zu\n", sizeof(sensor1.sensor_readings));
+    printf("Size of length: %zu\n", sizeof(sensor1.length));
+    printf("Size of max: %zu\n", sizeof(sensor1.max));
+    printf("Size of min: %zu\n", sizeof(sensor1.min));
+    printf("Size of new reading: %zu\n", sizeof(sensor1.new_reading));
+    return 0;
+}
+*/
